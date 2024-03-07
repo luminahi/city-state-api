@@ -9,5 +9,5 @@ public class CityStateApiApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CityStateApiApplication.class, args);
 	}
-
+	
 }
