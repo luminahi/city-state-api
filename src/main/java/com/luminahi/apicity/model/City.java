@@ -2,6 +2,7 @@ package com.luminahi.apicity.model;
 
 import java.util.Objects;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.luminahi.apicity.enums.State;
 
 import jakarta.persistence.Column;
@@ -11,6 +12,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
+@JsonSerialize(using = StateSerializer.class)
 public class City {
     
     @Id
