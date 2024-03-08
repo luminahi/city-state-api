@@ -1,8 +1,8 @@
 package com.luminahi.apicity.controller;
 
-import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,9 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.luminahi.apicity.model.City;
+import com.luminahi.apicity.model.CityNotFoundException;
 import com.luminahi.apicity.service.CityService;
-
-import jakarta.persistence.EntityNotFoundException;
 
 @RestController
 @RequestMapping("/cidades")
@@ -33,11 +32,12 @@ public class CityController {
     }
     
     @GetMapping("/{id}")
-    public City getCity(@PathVariable Integer id) throws NotFoundException {
-        return service.getRepository().findById(id)
-            .orElseThrow(() -> new EntityNotFoundException(
-                "esta cidade não consta em nossa base de dados"
+    public ResponseEntity<City> getCity(@PathVariable Integer id) throws CityNotFoundException {
+        City city = service.getRepository().findById(id)
+            .orElseThrow(() -> new CityNotFoundException(
+                "City not found with id: " + id
             ));
+        return ResponseEntity.ok(city);
     }
     
     @PostMapping
