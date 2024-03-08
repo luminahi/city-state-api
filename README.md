@@ -1,13 +1,13 @@
-## City and States API
+# City and States API
 
-# endpoints:
+Endpoints
 
-GET http://localhost:8080/cidades
+GET `http://localhost:8080/cidades`
 
-GET http://localhost:8080/cidades/{id}
+GET `http://localhost:8080/cidades/{id}`
 
-POST http://localhost:8080/cidades
+POST `http://localhost:8080/cidades`
 
-PUT http://localhost:8080/cidades/{id}
+PUT `http://localhost:8080/cidades/{id}`
 
-DELETE http://localhost:8080/cidades/{id}
+DELETE `http://localhost:8080/cidades/{id}`
