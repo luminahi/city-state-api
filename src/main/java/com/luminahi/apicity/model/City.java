@@ -10,6 +10,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @JsonSerialize(using = StateSerializer.class)
@@ -19,9 +21,14 @@ public class City {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     
+    @NotBlank(message = "um nome de cidade deve ser providenciado")
     @Column(nullable = false, length = 128)
     private String city;
-    
+
+    @NotNull(message = "um número ou nome de estado deve ser providenciado")
+    @ValidState(message = "use um valor entre 0 e 26 inclusos ou nome "
+        + "do estado em caixa alta usando underlines e sem acento como "
+        + "SAO_PAULO")
     @Column(nullable = false)
     private State state;
     

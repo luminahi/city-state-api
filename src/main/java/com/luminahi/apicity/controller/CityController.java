@@ -16,6 +16,8 @@ import com.luminahi.apicity.model.City;
 import com.luminahi.apicity.model.CityNotFoundException;
 import com.luminahi.apicity.service.CityService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/cidades")
 public class CityController {
@@ -41,16 +43,12 @@ public class CityController {
     }
     
     @PostMapping
-    public void createCity(@RequestBody City city) {
-        if (city.getCity() == null) return;
-        if (city.getState() == null) return;
+    public void createCity(@Valid @RequestBody City city) {
         service.getRepository().save(city);
     }
     
     @PutMapping("/{id}")
     public void updateCity(@RequestBody City city, @PathVariable Integer id) {
-        if (city.getCity() == null) return;
-        if (city.getState() == null) return;
         service.getRepository().findById(id).map(modifiedCity -> {
            modifiedCity.setCity(city.getCity());
            modifiedCity.setState(city.getState());
