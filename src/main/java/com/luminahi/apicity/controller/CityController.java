@@ -1,5 +1,7 @@
 package com.luminahi.apicity.controller;
 
+import java.net.URI;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.luminahi.apicity.model.City;
 import com.luminahi.apicity.model.exceptions.CityNotFoundException;
@@ -39,25 +42,38 @@ public class CityController {
             .orElseThrow(() -> new CityNotFoundException(
                 "Cidade com o id: " + id + " não foi achada"
             ));
+        
         return ResponseEntity.ok(city);
     }
     
     @PostMapping
-    public void createCity(@Valid @RequestBody City city) {
-        service.getRepository().save(city);
+    public ResponseEntity<?> createCity(@Valid @RequestBody City city) {
+        City newCity = service.getRepository().save(city);
+        
+        URI uriOfNewResource = ServletUriComponentsBuilder
+                .fromCurrentRequestUri()
+                .path("/{id}")
+                .buildAndExpand(newCity.getId())
+                .toUri();
+        
+        return ResponseEntity.created(uriOfNewResource).build();
     }
     
     @PutMapping("/{id}")
-    public void updateCity(@Valid @RequestBody City city, @PathVariable Integer id) {
+    public ResponseEntity<?> updateCity(@Valid @RequestBody City city, @PathVariable Integer id) {
         service.getRepository().findById(id).map(modifiedCity -> {
            modifiedCity.setCity(city.getCity());
            modifiedCity.setState(city.getState());
            return service.getRepository().save(modifiedCity);
         }).orElseGet(() -> service.getRepository().save(city));
+        
+        return ResponseEntity.noContent().build();
     }
     
     @DeleteMapping("/{id}")
-    public void deleteCity(@PathVariable Integer id) {
+    public ResponseEntity<?> deleteCity(@PathVariable Integer id) {
         service.getRepository().deleteById(id);
+        
+        return ResponseEntity.noContent().build();
     }
 }
