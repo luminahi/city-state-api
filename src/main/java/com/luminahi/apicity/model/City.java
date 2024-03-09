@@ -26,6 +26,7 @@ public class City {
     private String city;
 
     @NotNull(message = "um número ou nome de estado deve ser providenciado")
+    @EnumStatePattern(regexp = BrazilStates.ALL)
     @Column(nullable = false)
     private State state;
     
