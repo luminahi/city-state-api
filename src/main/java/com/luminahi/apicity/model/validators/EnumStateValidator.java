@@ -1,9 +1,10 @@
-package com.luminahi.apicity.model;
+package com.luminahi.apicity.model.validators;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.luminahi.apicity.enums.State;
+import com.luminahi.apicity.model.annotations.EnumStatePattern;
+import com.luminahi.apicity.model.enums.State;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;

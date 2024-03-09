@@ -6,8 +6,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.luminahi.apicity.enums.State;
 import com.luminahi.apicity.model.City;
+import com.luminahi.apicity.model.enums.State;
 import com.luminahi.apicity.repository.CityRepository;
 
 @Configuration

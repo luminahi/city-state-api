@@ -3,7 +3,8 @@ package com.luminahi.apicity.model;
 import java.util.Objects;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.luminahi.apicity.enums.State;
+import com.luminahi.apicity.model.annotations.EnumStatePattern;
+import com.luminahi.apicity.model.enums.State;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

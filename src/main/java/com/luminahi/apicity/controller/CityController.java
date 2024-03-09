@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.luminahi.apicity.model.City;
-import com.luminahi.apicity.model.CityNotFoundException;
+import com.luminahi.apicity.model.exceptions.CityNotFoundException;
 import com.luminahi.apicity.service.CityService;
 
 import jakarta.validation.Valid;

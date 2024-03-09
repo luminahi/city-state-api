@@ -1,4 +1,4 @@
-package com.luminahi.apicity.enums;
+package com.luminahi.apicity.model.enums;
 
 public enum State {
     ACRE("Acre"),

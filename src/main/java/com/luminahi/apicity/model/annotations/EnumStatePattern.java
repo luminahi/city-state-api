@@ -1,10 +1,12 @@
-package com.luminahi.apicity.model;
+package com.luminahi.apicity.model.annotations;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
+
+import com.luminahi.apicity.model.validators.EnumStateValidator;
 
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;

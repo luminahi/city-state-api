@@ -1,4 +1,4 @@
-package com.luminahi.apicity.model;
+package com.luminahi.apicity.model.advices;
 
 import java.util.HashMap;
 import java.util.Map;

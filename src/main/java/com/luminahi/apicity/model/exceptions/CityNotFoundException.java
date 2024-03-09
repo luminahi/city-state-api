@@ -1,4 +1,4 @@
-package com.luminahi.apicity.model;
+package com.luminahi.apicity.model.exceptions;
 
 public class CityNotFoundException extends RuntimeException {
     private static final long serialVersionUID = 1L;
