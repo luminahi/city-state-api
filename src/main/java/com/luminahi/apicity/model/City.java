@@ -26,9 +26,6 @@ public class City {
     private String city;
 
     @NotNull(message = "um número ou nome de estado deve ser providenciado")
-    @ValidState(message = "use um valor entre 0 e 26 inclusos ou nome "
-        + "do estado em caixa alta usando underlines e sem acento como "
-        + "SAO_PAULO")
     @Column(nullable = false)
     private State state;
     

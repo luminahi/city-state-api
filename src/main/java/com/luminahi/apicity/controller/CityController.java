@@ -37,7 +37,7 @@ public class CityController {
     public ResponseEntity<City> getCity(@PathVariable Integer id) throws CityNotFoundException {
         City city = service.getRepository().findById(id)
             .orElseThrow(() -> new CityNotFoundException(
-                "City not found with id: " + id
+                "Cidade com o id: " + id + " não foi achada"
             ));
         return ResponseEntity.ok(city);
     }
@@ -48,7 +48,7 @@ public class CityController {
     }
     
     @PutMapping("/{id}")
-    public void updateCity(@RequestBody City city, @PathVariable Integer id) {
+    public void updateCity(@Valid @RequestBody City city, @PathVariable Integer id) {
         service.getRepository().findById(id).map(modifiedCity -> {
            modifiedCity.setCity(city.getCity());
            modifiedCity.setState(city.getState());
