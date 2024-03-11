@@ -1,6 +1,5 @@
 package com.luminahi.apicity.model.advices;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.http.HttpStatus;
@@ -17,8 +16,6 @@ public class HttpMessageNotReadableAdvice {
     @ExceptionHandler(HttpMessageNotReadableException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     Map<String, String> httpMessageNotReadableException(HttpMessageNotReadableException ex) {
-        Map<String, String> error = new HashMap<>();
-        error.put("error", ex.getMessage());
-        return error;
+        return Map.of(HttpStatus.BAD_REQUEST.toString(), ex.getMessage());
     }
 }

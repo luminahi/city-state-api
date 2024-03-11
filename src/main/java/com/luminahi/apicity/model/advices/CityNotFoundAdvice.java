@@ -1,5 +1,7 @@
 package com.luminahi.apicity.model.advices;
 
+import java.util.Map;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -14,7 +16,7 @@ public class CityNotFoundAdvice {
     @ResponseBody
     @ExceptionHandler(CityNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    String cityNotFoundHandler(CityNotFoundException ex) {
-        return ex.getMessage();
+    Map<String, String> cityNotFoundHandler(CityNotFoundException ex) {
+        return Map.of(HttpStatus.NOT_FOUND.toString(), ex.getMessage());
     }
 }
