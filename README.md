@@ -18,7 +18,7 @@ DELETE `http://localhost:8080/cidades/{id}`
 
 Usage:
     
-Get all cities, default size is 5, but you can modify this value like this 
+Retrieve a number of cities based on size param, if not provided, the default value is 5
 ```
 curl http://localhost:8080/cidades?size=10
 ```
