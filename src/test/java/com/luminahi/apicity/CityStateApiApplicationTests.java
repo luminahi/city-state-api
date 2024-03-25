@@ -15,9 +15,13 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 @AutoConfigureMockMvc
 class CityStateApiApplicationTests {
 
-    @Autowired
     private MockMvc mockMvc;
     
+    @Autowired
+    public CityStateApiApplicationTests(MockMvc mockMvc) {
+        this.mockMvc = mockMvc;
+    }
+
     @Test
     void testGetCity() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/cidades/{id}", 1))
